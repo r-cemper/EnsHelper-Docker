@@ -1,5 +1,7 @@
-# EnsHelper
-IRIS Integration Extensions and Utilities 
+## EnsHelper-Docker
+IRIS Integration Extensions and Utilities   
+As the related PR was ignored, it's now in the package  
+A simple Production + Service + Operation was added and enhanced
 
 # Install
 ```
