@@ -1,14 +1,8 @@
 ## EnsHelper-Docker
 IRIS Integration Extensions and Utilities   
-As the related PR was ignored, it's now in the package  
+As the related PR was ignored, it's now in this package  
 A simple Production + Service + Operation was added and enhanced
-
-# Install
-```
-zpm install alwo-enshelper
-```
-
-# Class - HostRequestResponseInfo
+## Class - HostRequestResponseInfo
 Extend a custom BusinessService, BusinessHost or BusinessOperation.<br/>
 When Instance Settings of a custom class are viewed in Production on Management Portal, this helper adds two new fields to the "Information" section.<br/>
 These fields show the Request Message Types and Response Message Types, consumed and returned by the production instance.
@@ -16,17 +10,14 @@ These fields show the Request Message Types and Response Message Types, consumed
 ![Image Show Request Response Types](img/HostRequestResponseInfo.png)
 
 ## How to implement
-To use simply add this class name to the Extends list in class definition of any custom Service, Process or Operation type<br/>
-
+To use it, simply add this class name to the Extends list in class definition of any custom Service, Process or Operation type   
 ### Business Service
-
 ```objectScript
 Class myService extends (Ens.BusinessService, alwo.EnsHelper.HostRequestResponseInfo)
 {
   ...
 }
 ```
-
 ### Business Process
 
 ```objectScript
@@ -35,9 +26,7 @@ Class myBusinessProcess extends (Ens.BusinessProcess, alwo.EnsHelper.HostRequest
   ...
 }
 ```
-
 ### Operation
-
 ```objectScript
 Class myOperation extends (Ens.BusinessOperation, alwo.EnsHelper.HostRequestResponseInfo)
 {
@@ -50,23 +39,26 @@ Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installi
 ### Installation    
 Clone/git pull the repo into any local directory
 ```
-$ git clone https://github.com/rcemper/DK_EnsHelper.git
+$ git clone https://github.com/r-cemper/EnsHelper-Docker.git
 ```
-Open the terminal in this directory and run:
+To build and start the container run:
 ```
-$ docker-compose build
-```
-Run IRIS container with your project:
-```
-$ docker-compose up -d
+$ docker-compose up -d   && docker-compose logs -f
 ```
 Test from docker console
 ```
 $ docker-compose exec iris1 iris session iris
 USER>
 ```
-or using **WebTerminal**
+or using **iterm**
 ```
-http://localhost:42773/terminal/
+http://localhost:42773/iterm/
 ```
-
+The prepared demo production 
+```
+http://localhost:42773/csp/user/EnsPortal.ProductionConfig.zen?$NAMESPACE=USER&PRODUCTION=dc.iris.mail.Production
+```
+System Management Portal
+```
+http://localhost:42773/csp/sys/UtilHome.csp
+```
