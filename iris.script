@@ -1,13 +1,20 @@
 zn "%SYS"
 Do ##class(Security.Users).UnExpireUserPasswords("*")
 zpm "install passwordless"
-
+zpm "install iterm"
 zn "USER"
-
-// Create /_vscode web app to support intersystems-community.testingmanager VS Code extension
-zpm "install vscode-per-namespace-settings"
-zpm "install webterminal"
-
-zpm "load /opt/irisapp/ -v":1
-
+zpm "install alwo-enshelper"
+;; add example
+zpm "install iris-mail"
+zpm "list"
+;; add new feature to demo
+set %pkg="dc.iris.mail."
+set %app=",alwo.EnsHelper.HostRequestResponseInfo"
+set %1="set %name=%pkg_%cls"
+set %2="set %def=##class(%Dictionary.ClassDefinition).%OpenId(%name)"
+set %3="set %def.Super=%def.Super_%app"
+set %4="write %def.%Save()"
+set %5="do $system.OBJ.Compile(%name,""ck"")"
+set %6="write !,%def.Name"
+for %cls="Production","Service","Operation" X %1,%2,%3,%4,%5 Zwrite %def.Super
 halt
